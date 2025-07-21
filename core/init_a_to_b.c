@@ -72,10 +72,17 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 		a->push_cost = a->index;
 		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
-		if (a->target_node->above_median)
-			a->push_cost += a->target_node->index;
+		if (a->target_node)
+		{
+			if (a->target_node->above_median)
+				a->push_cost += a->target_node->index;
+			else
+				a->push_cost += len_b - (a->target_node->index);
+		}
 		else
-			a->push_cost += len_b - (a->target_node->index);
+		{
+			a->push_cost += 0;
+		}
 		a = a->next;
 	}
 }

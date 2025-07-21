@@ -16,8 +16,7 @@
 
 int	error_syntax(char *str_n)
 {
-	if (!(*str_n == '+' || *str_n == '-'
-			|| !(*str_n >= '0' && *str_n <= '9')))
+	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
 		return (1);
 	if ((*str_n == '+' || *str_n == '-') && !(str_n[1] >= '0' && str_n[1]
 			<= '9'))
@@ -48,13 +47,12 @@ void	free_stack(t_stack_node **stack)
 	t_stack_node	*tmp;
 	t_stack_node	*current;
 
-	if (!stack)
+	if (!stack || !*stack)
 		return ;
 	current = *stack;
 	while (current)
 	{
 		tmp = current->next;
-		current->nbr = 0;
 		free(current);
 		current = tmp;
 	}

@@ -45,13 +45,13 @@ static void	append_node(t_stack_node **stack, int n)
 	node = malloc(sizeof(t_stack_node));
 	if (!node)
 		return ;
-	node->next = NULL;
 	node->nbr = n;
 	node->cheapest = 0;
-	if (!(stack))
+	node->next = NULL;
+	node->prev = NULL;
+	if (*stack == NULL)
 	{
 		*stack = node;
-		node->prev = NULL;
 	}
 	else
 	{

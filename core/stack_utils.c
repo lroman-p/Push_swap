@@ -22,7 +22,7 @@ int	stack_len(t_stack_node *stack)
 	while (stack)
 	{
 		stack = stack->next;
-		count--;
+		count++;
 	}
 	return (count);
 }

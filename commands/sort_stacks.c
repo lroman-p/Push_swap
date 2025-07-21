@@ -16,6 +16,8 @@
 
 static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {
+	if (*b == NULL)
+		return ;
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b, false);
 }
